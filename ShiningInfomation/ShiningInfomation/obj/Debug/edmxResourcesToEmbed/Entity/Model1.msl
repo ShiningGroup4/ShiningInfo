@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StudentInfoManagementModelStoreContainer" CdmEntityContainer="StudentInfoManagementEntities">
+    <EntitySetMapping Name="AdminInfo">
+      <EntityTypeMapping TypeName="StudentInfoManagementModel.AdminInfo">
+        <MappingFragment StoreEntitySet="AdminInfo">
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentInfo">
+      <EntityTypeMapping TypeName="StudentInfoManagementModel.StudentInfo">
+        <MappingFragment StoreEntitySet="StudentInfo">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="StudentAlias" ColumnName="StudentAlias" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Motto" ColumnName="Motto" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="GroupNum" ColumnName="GroupNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeacherInfo">
+      <EntityTypeMapping TypeName="StudentInfoManagementModel.TeacherInfo">
+        <MappingFragment StoreEntitySet="TeacherInfo">
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+          <ScalarProperty Name="TeacherAlias" ColumnName="TeacherAlias" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

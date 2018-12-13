@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentInfoManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminInfo">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdminName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="StudentInfo">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="StudentName" Type="nvarchar(max)" />
+    <Property Name="StudentAlias" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Team" Type="varchar" MaxLength="50" />
+    <Property Name="Motto" Type="nvarchar(max)" />
+    <Property Name="TeacherID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupNum" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TeacherInfo">
+    <Key>
+      <PropertyRef Name="TeacherID" />
+    </Key>
+    <Property Name="TeacherID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TeacherName" Type="nvarchar(max)" />
+    <Property Name="TeacherAlias" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Team" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_StudentInfo_TeacherInfo">
+    <End Role="TeacherInfo" Type="Self.TeacherInfo" Multiplicity="1" />
+    <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeacherInfo">
+        <PropertyRef Name="TeacherID" />
+      </Principal>
+      <Dependent Role="StudentInfo">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StudentInfoManagementModelStoreContainer">
+    <EntitySet Name="AdminInfo" EntityType="Self.AdminInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeacherInfo" EntityType="Self.TeacherInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_StudentInfo_TeacherInfo" Association="Self.FK_StudentInfo_TeacherInfo">
+      <End Role="TeacherInfo" EntitySet="TeacherInfo" />
+      <End Role="StudentInfo" EntitySet="StudentInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

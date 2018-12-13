@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StudentInfoManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminInfo">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StudentInfo">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StudentName" Type="nvarchar(max)" />
+          <Property Name="StudentAlias" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Team" Type="varchar" MaxLength="50" />
+          <Property Name="Motto" Type="nvarchar(max)" />
+          <Property Name="TeacherID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupNum" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TeacherInfo">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeacherName" Type="nvarchar(max)" />
+          <Property Name="TeacherAlias" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Team" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_StudentInfo_TeacherInfo">
+          <End Role="TeacherInfo" Type="Self.TeacherInfo" Multiplicity="1" />
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeacherInfo">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="StudentInfo">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentInfoManagementModelStoreContainer">
+          <EntitySet Name="AdminInfo" EntityType="Self.AdminInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherInfo" EntityType="Self.TeacherInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_StudentInfo_TeacherInfo" Association="Self.FK_StudentInfo_TeacherInfo">
+            <End Role="TeacherInfo" EntitySet="TeacherInfo" />
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentInfoManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminInfo">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="StudentInfo">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StudentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StudentAlias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Team" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Motto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TeacherInfo" Relationship="Self.FK_StudentInfo_TeacherInfo" FromRole="StudentInfo" ToRole="TeacherInfo" />
+        </EntityType>
+        <EntityType Name="TeacherInfo">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TeacherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherAlias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Team" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StudentInfo" Relationship="Self.FK_StudentInfo_TeacherInfo" FromRole="TeacherInfo" ToRole="StudentInfo" />
+        </EntityType>
+        <Association Name="FK_StudentInfo_TeacherInfo">
+          <End Role="TeacherInfo" Type="Self.TeacherInfo" Multiplicity="1" />
+          <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeacherInfo">
+              <PropertyRef Name="TeacherID" />
+            </Principal>
+            <Dependent Role="StudentInfo">
+              <PropertyRef Name="TeacherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentInfoManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminInfo" EntityType="Self.AdminInfo" />
+          <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" />
+          <EntitySet Name="TeacherInfo" EntityType="Self.TeacherInfo" />
+          <AssociationSet Name="FK_StudentInfo_TeacherInfo" Association="Self.FK_StudentInfo_TeacherInfo">
+            <End Role="TeacherInfo" EntitySet="TeacherInfo" />
+            <End Role="StudentInfo" EntitySet="StudentInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentInfoManagementModelStoreContainer" CdmEntityContainer="StudentInfoManagementEntities">
+          <EntitySetMapping Name="AdminInfo">
+            <EntityTypeMapping TypeName="StudentInfoManagementModel.AdminInfo">
+              <MappingFragment StoreEntitySet="AdminInfo">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentInfo">
+            <EntityTypeMapping TypeName="StudentInfoManagementModel.StudentInfo">
+              <MappingFragment StoreEntitySet="StudentInfo">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="StudentAlias" ColumnName="StudentAlias" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+                <ScalarProperty Name="Motto" ColumnName="Motto" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="GroupNum" ColumnName="GroupNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherInfo">
+            <EntityTypeMapping TypeName="StudentInfoManagementModel.TeacherInfo">
+              <MappingFragment StoreEntitySet="TeacherInfo">
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="TeacherAlias" ColumnName="TeacherAlias" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

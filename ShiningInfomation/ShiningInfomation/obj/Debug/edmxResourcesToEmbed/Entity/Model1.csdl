@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentInfoManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminInfo">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="StudentInfo">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StudentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StudentAlias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Team" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Motto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TeacherID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GroupNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TeacherInfo" Relationship="Self.FK_StudentInfo_TeacherInfo" FromRole="StudentInfo" ToRole="TeacherInfo" />
+  </EntityType>
+  <EntityType Name="TeacherInfo">
+    <Key>
+      <PropertyRef Name="TeacherID" />
+    </Key>
+    <Property Name="TeacherID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TeacherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TeacherAlias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Team" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="StudentInfo" Relationship="Self.FK_StudentInfo_TeacherInfo" FromRole="TeacherInfo" ToRole="StudentInfo" />
+  </EntityType>
+  <Association Name="FK_StudentInfo_TeacherInfo">
+    <End Role="TeacherInfo" Type="Self.TeacherInfo" Multiplicity="1" />
+    <End Role="StudentInfo" Type="Self.StudentInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeacherInfo">
+        <PropertyRef Name="TeacherID" />
+      </Principal>
+      <Dependent Role="StudentInfo">
+        <PropertyRef Name="TeacherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StudentInfoManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminInfo" EntityType="Self.AdminInfo" />
+    <EntitySet Name="StudentInfo" EntityType="Self.StudentInfo" />
+    <EntitySet Name="TeacherInfo" EntityType="Self.TeacherInfo" />
+    <AssociationSet Name="FK_StudentInfo_TeacherInfo" Association="Self.FK_StudentInfo_TeacherInfo">
+      <End Role="TeacherInfo" EntitySet="TeacherInfo" />
+      <End Role="StudentInfo" EntitySet="StudentInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
