@@ -22,11 +22,10 @@ namespace ShiningInfomation.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var userinfo = LoginDemo.LogFunction(model);
-                    if (userinfo != null)
+                    var userinfo = LoginDemo.LoginFun(model.account, model.pwd);
+                    if (userinfo == true)
                     {
-                        RedirectToAction("Index");
-                        
+                        return RedirectToAction("Index", "Index"); //第一个Index是指Index控制器，第二个是Index这个action。这行实现了页面的跳转
                     }
                 }
 
