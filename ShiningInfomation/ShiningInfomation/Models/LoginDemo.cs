@@ -9,11 +9,28 @@ namespace ShiningInfomation.Models
 {
     public class LoginDemo
     {
-        public static StudentInfo LogFunction(Vm001 model)
+        public static Boolean LoginFun(string account, string pwd)
         {
             StudentInfoManagementEntities se = new StudentInfoManagementEntities();
 
-            return se.StudentInfo.FirstOrDefault(m => m.StudentID == model.account && m.Password == model.pwd);
+            var modelID = se.StudentInfo.FirstOrDefault(m => m.StudentID == account);
+            var AdminModelID = se.AdminInfo.FirstOrDefault(m => m.AdminID == account); //管理员
+
+            if (modelID != null && AdminModelID == null)
+            {
+                if (modelID.Password == pwd) { return true; }
+                else { return false; }
+            }
+            else if (modelID == null && AdminModelID != null)
+            {
+                if (AdminModelID.Password == pwd) { return true; }
+                else { return false; }
+            }
+            else
+            {
+                return false;
+            }
         }
+
     }
 }
