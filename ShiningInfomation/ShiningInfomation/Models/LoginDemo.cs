@@ -13,8 +13,8 @@ namespace ShiningInfomation.Models
         {
             StudentInfoManagementEntities se = new StudentInfoManagementEntities();
 
-            var modelID = se.StudentInfo.FirstOrDefault(m => m.StudentID == account);
-            var AdminModelID = se.AdminInfo.FirstOrDefault(m => m.AdminID == account); //管理员
+            var modelID = se.StudentInfo.FirstOrDefault(m => m.StudentAlias == account);
+            var AdminModelID = se.AdminInfo.FirstOrDefault(m => m.AdminName == account); //管理员
 
             if (modelID != null && AdminModelID == null)
             {
@@ -31,6 +31,5 @@ namespace ShiningInfomation.Models
                 return false;
             }
         }
-
     }
 }

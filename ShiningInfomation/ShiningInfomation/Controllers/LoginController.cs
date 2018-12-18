@@ -25,7 +25,7 @@ namespace ShiningInfomation.Controllers
                     var userinfo = LoginDemo.LoginFun(model.account, model.pwd);
                     if (userinfo == true)
                     {
-                        return RedirectToAction("Index", "Index"); //第一个Index是指Index控制器，第二个是Index这个action。这行实现了页面的跳转
+                        return RedirectToAction("Search", "Search");
                     }
                 }
 

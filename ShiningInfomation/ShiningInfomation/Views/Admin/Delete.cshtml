@@ -1,0 +1,82 @@
+﻿@model ShiningInfomation.Entity.StudentInfo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<div>
+    <h3>删除学生信息</h3>
+    <hr/>
+    <dl class="dl-horizontal" style="">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentAlias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentAlias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Team)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherInfo.TeacherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacherInfo.TeacherName)
+        </dd>
+
+    </dl>
+    <hr />
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="margin-left:300px">
+            <input type="submit" value="删除" class="btn btn-default" style="margin-bottom:10px" />
+        </div>
+
+        @Html.ActionLink("返回", "Index")
+
+    }
+</div>

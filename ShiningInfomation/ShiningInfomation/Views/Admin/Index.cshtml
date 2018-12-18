@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ShiningInfomation.Entity.StudentInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>你好,管理员!</h2>
+<br/>
+
+<p>
+    @Html.ActionLink("新建学生信息", "Create")
+</p>
+<br/>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentAlias)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Team)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeacherInfo.TeacherName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentAlias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeacherInfo.TeacherName)
+        </td>
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id=item.StudentID }) |
+            @Html.ActionLink("显示", "Details", new { id=item.StudentID }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.StudentID })
+        </td>
+    </tr>
+}
+
+</table>

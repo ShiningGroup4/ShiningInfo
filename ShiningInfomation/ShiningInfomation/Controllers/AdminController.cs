@@ -1,94 +1,133 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ShiningInfomation.Models;
 using ShiningInfomation.Entity;
-using ShiningInfomation.Models.ViewModel;
 
 namespace ShiningInfomation.Controllers
 {
     public class AdminController : Controller
     {
+        private StudentInfoManagementEntities db = new StudentInfoManagementEntities();
+
         // GET: Admin
-        public ActionResult AdminIndex() //管理员页
+        public ActionResult Index()
         {
-            return View(AdminDemo.GetAll());
+            var studentInfo = db.StudentInfo.Include(s => s.TeacherInfo);
+            return View(studentInfo.ToList());
         }
+
+        // GET: Admin/Details/5
         public ActionResult Details(string id)
         {
-            var model = AdminDemo.GetById(id);
-            if (model == null) return View("Error");
-            return View(model);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            StudentInfo studentInfo = db.StudentInfo.Find(id);
+            if (studentInfo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(studentInfo);
         }
+
+        // GET: Admin/Create
         public ActionResult Create()
         {
-            return View(new Vm002());
+            ViewBag.TeacherID = new SelectList(db.TeacherInfo, "TeacherID", "TeacherName");
+            return View();
         }
+
+        // POST: Admin/Create
+       
+       
         [HttpPost]
-        public ActionResult Create(Vm002 model)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "StudentID,StudentName,StudentAlias,Password,Team,Motto,TeacherID,GroupNum")] StudentInfo studentInfo)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    model.Save();
-                    return RedirectToAction("Index");
-                }
+                db.StudentInfo.Add(studentInfo);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", ex.Message);
-            }
-            return View(model);
+
+            ViewBag.TeacherID = new SelectList(db.TeacherInfo, "TeacherID", "TeacherName", studentInfo.TeacherID);
+            return View(studentInfo);
         }
+
+        // GET: Admin/Edit/5
         public ActionResult Edit(string id)
         {
-            var model = AdminDemo.GetById(id);
-            if (model == null) return View("Error");
-            ViewData.Model = model;
-            return View(model);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            StudentInfo studentInfo = db.StudentInfo.Find(id);
+            if (studentInfo == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.TeacherID = new SelectList(db.TeacherInfo, "TeacherID", "TeacherName", studentInfo.TeacherID);
+            return View(studentInfo);
         }
+
+        // POST: Admin/Edit/5
+
         [HttpPost]
-        public ActionResult Edit(string id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+
+        public ActionResult Edit([Bind(Include = "StudentID,StudentName,StudentAlias,Password,Team,Motto,TeacherID,GroupNum")] StudentInfo studentInfo)
+        //public ActionResult Edit([Bind(Include = "StudentID,StudentName,StudentAlias,Team,Motto,TeacherID,GroupNum")] StudentInfo studentInfo)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    StudentInfoManagementEntities se = new StudentInfoManagementEntities();
-                    var model = se.StudentInfo.FirstOrDefault(m => m.StudentID == id);
-                    string[] strArr = collection.AllKeys;
-                    TryUpdateModel(model, strArr);
-                    se.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                db.Entry(studentInfo).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", ex.Message);
-            }
-            return View();
+            ViewBag.TeacherID = new SelectList(db.TeacherInfo, "TeacherID", "TeacherName", studentInfo.TeacherID);
+            return View(studentInfo);
         }
+
+        // GET: Admin/Delete/5
         public ActionResult Delete(string id)
         {
-            try
+            if (id == null)
             {
-                StudentInfoManagementEntities se = new StudentInfoManagementEntities();
-                var Student01 = se.StudentInfo.FirstOrDefault(m => m.StudentID == id);
-                if (Student01 != null)
-                {
-                    se.StudentInfo.Remove(Student01);
-                    se.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            catch (Exception ex)
+            StudentInfo studentInfo = db.StudentInfo.Find(id);
+            if (studentInfo == null)
             {
-                ModelState.AddModelError("", ex.Message);
+                return HttpNotFound();
             }
-            return View();
+            return View(studentInfo);
+        }
+
+        // POST: Admin/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            StudentInfo studentInfo = db.StudentInfo.Find(id);
+            db.StudentInfo.Remove(studentInfo);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
