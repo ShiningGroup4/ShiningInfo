@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div style="margin-bottom:10px;">
+        <img src="~/Image/Login_header.PNG" />
+    </div>
+    <div style="position:absolute; ">
+        @RenderBody()         
+    </div>
+    
+
+
+
+</body>
+</html>

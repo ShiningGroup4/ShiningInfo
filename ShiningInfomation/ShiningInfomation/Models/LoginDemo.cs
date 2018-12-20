@@ -14,7 +14,7 @@ namespace ShiningInfomation.Models
             StudentInfoManagementEntities se = new StudentInfoManagementEntities();
 
             var modelID = se.StudentInfo.FirstOrDefault(m => m.StudentAlias == account);
-            var AdminModelID = se.AdminInfo.FirstOrDefault(m => m.AdminName == account); //管理员
+            var AdminModelID = se.AdminInfo.FirstOrDefault(m => m.AdminName == account); //管理员mmm
 
             if (modelID != null && AdminModelID == null)
             {
