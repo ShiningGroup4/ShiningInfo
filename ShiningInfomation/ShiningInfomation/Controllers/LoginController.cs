@@ -23,9 +23,17 @@ namespace ShiningInfomation.Controllers
                 if (ModelState.IsValid)
                 {
                     var userinfo = LoginDemo.LoginFun(model.account, model.pwd);
-                    if (userinfo == true)
+                    if (userinfo == 1)
                     {
                         return RedirectToAction("Search", "Search");
+                    }
+                    if(userinfo == 2)
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else
+                    {
+                        return RedirectToAction("error");
                     }
                 }
 

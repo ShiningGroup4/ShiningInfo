@@ -166,6 +166,5 @@ D:\Github\ShiningInfo\ShiningInfomation\ShiningInfomation\bin\System.Web.WebPage
 D:\Github\ShiningInfo\ShiningInfomation\ShiningInfomation\bin\System.Web.WebPages.Razor.xml
 D:\Github\ShiningInfo\ShiningInfomation\ShiningInfomation\bin\Antlr3.Runtime.pdb
 D:\Github\ShiningInfo\ShiningInfomation\ShiningInfomation\bin\Newtonsoft.Json.xml
-D:\Github\ShiningInfo\ShiningInfomation\ShiningInfomation\obj\Debug\ShiningInfomation.csprojResolveAssemblyReference.cache
 D:\Github\ShiningInfo\ShiningInfomation\ShiningInfomation\obj\Debug\ShiningInfomation.dll
 D:\Github\ShiningInfo\ShiningInfomation\ShiningInfomation\obj\Debug\ShiningInfomation.pdb

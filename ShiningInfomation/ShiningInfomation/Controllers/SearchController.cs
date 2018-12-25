@@ -16,7 +16,7 @@ namespace ShiningInfomation.Controllers
             if (!String.IsNullOrEmpty(Search_name) || !String.IsNullOrEmpty(Search_team) || !String.IsNullOrEmpty(Search_group))
             {
                 var SearchList = from u in se.StudentInfo
-                                 where u.StudentName.Contains(Search_name) && u.Team.Contains(Search_team) && u.Team.Contains(Search_group)
+                                 where u.StudentName.Contains(Search_name) && u.Team.Contains(Search_team) && u.GroupNum.Contains(Search_group)
                                  select u;
                 return View(SearchList.ToList());
             }
