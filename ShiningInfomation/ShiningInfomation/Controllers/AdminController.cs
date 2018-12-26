@@ -45,7 +45,7 @@ namespace ShiningInfomation.Controllers
 
         // POST: Admin/Create
        
-       
+       //
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StudentID,StudentName,StudentAlias,Password,Team,Motto,TeacherID,GroupNum")] StudentInfo studentInfo)
