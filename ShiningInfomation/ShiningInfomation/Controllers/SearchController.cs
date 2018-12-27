@@ -11,12 +11,12 @@ namespace ShiningInfomation.Controllers
     {
         StudentInfoManagementEntities se = new StudentInfoManagementEntities();
         // GET: Search
-        public ActionResult Search(string Search_name, string Search_team, string Search_group)
+        public ActionResult Search(string Search_name, string Search_team, string Search_group, string Search_teacher)
         {
-            if (!String.IsNullOrEmpty(Search_name) || !String.IsNullOrEmpty(Search_team) || !String.IsNullOrEmpty(Search_group))
+            if (!String.IsNullOrEmpty(Search_name) || !String.IsNullOrEmpty(Search_team) || !String.IsNullOrEmpty(Search_group) || !String.IsNullOrEmpty(Search_teacher))
             {
                 var SearchList = from u in se.StudentInfo
-                                 where u.StudentName.Contains(Search_name) && u.Team.Contains(Search_team) && u.GroupNum.Contains(Search_group)
+                                 where u.StudentName.Contains(Search_name) && u.Team.Contains(Search_team) && u.GroupNum.Contains(Search_group) && u.TeacherInfo.TeacherName.Contains(Search_teacher)
                                  select u;
                 return View(SearchList.ToList());
             }

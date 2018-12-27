@@ -1,25 +1,21 @@
 ﻿@model IEnumerable<ShiningInfomation.Entity.StudentInfo>
-
 @{
     ViewBag.Title = "学生信息查询";
 }
-
 <h2>Search</h2>
-
 @using (Html.BeginForm())
 {
     <p>
-        姓名: @Html.TextBox("Search_name")
+        学生姓名: @Html.TextBox("Search_name")
+        <br><br>
+        导师姓名: @Html.TextBox("Search_teacher")
         <br><br>
         项目组: @Html.TextBox("Search_team")
         <br><br>
         闪亮小组: @Html.TextBox("Search_group")
-        <br><br />
-
         <input type="submit" value="查询" />
     </p>
 }
-
 <table class="table">
     <tr>
         <th>
@@ -28,7 +24,6 @@
         <th>
             @Html.DisplayNameFor(model => model.StudentAlias)
         </th>
-
         <th>
             @Html.DisplayNameFor(model => model.Team)
         </th>
@@ -43,7 +38,6 @@
         </th>
         <th></th>
     </tr>
-
     @foreach (var item in Model)
     {
         <tr>
@@ -67,5 +61,4 @@
             </td>
         </tr>
     }
-
 </table>
