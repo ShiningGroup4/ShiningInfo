@@ -1,18 +1,22 @@
-﻿@model IEnumerable<ShiningInfomation.Entity.StudentInfo>
+﻿@{
+    Layout = "~/Views/Shared/_LayoutSearch.cshtml";
+}
+
+@model IEnumerable<ShiningInfomation.Entity.StudentInfo>
 @{
-    ViewBag.Title = "学生信息查询";
+    ViewBag.Title = "Search";
 }
 <h2>Search</h2>
 @using (Html.BeginForm())
 {
-    <p style="font-family:Verdana;font-size:110%;color:black">
-        <strong>学生姓名</strong> @Html.TextBox("Search_name", "", new { style = "width:150px" })
+    <p style="font-family:Arial;font-size:110%;color:black">
+        <strong>学生姓名</strong> @Html.TextBox("Search_name", "", new { style = "width:150px; border-radius:5px; " })
         <br><br>
-        <strong>导师姓名</strong> @Html.TextBox("Search_teacher", "", new { style = "width:150px" })
+        <strong>导师姓名</strong> @Html.TextBox("Search_teacher", "", new { style = "width:150px; border-radius:5px;" })
         <br><br>
-        <strong>项目组</strong>&emsp; @Html.TextBox("Search_team", "", new { style = "width:150px" })
+        <strong>项目组</strong>&emsp; @Html.TextBox("Search_team", "", new { style = "width:150px; border-radius:5px;" })
         <br><br>
-        <strong>闪亮小组</strong> @Html.TextBox("Search_group", "", new { style = "width:150px" })
+        <strong>闪亮小组</strong> @Html.TextBox("Search_group", "", new { style = "width:150px; border-radius:5px;" })
         <br>
         <div style="border:1px;width:215px;height:80px;text-align:right">
             <input type="submit" value="查询" />
