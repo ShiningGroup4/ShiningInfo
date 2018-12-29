@@ -48,7 +48,8 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.StudentName)
+                @Html.ActionLink(item.StudentName, "DetailsStudent", new { id = item.StudentID })
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StudentAlias)
@@ -63,7 +64,7 @@
                 @Html.DisplayFor(modelItem => item.GroupNum)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TeacherInfo.TeacherName)
+                @Html.ActionLink(item.TeacherInfo.TeacherName, "DetailsTeacher", new { id = item.TeacherInfo.TeacherID })
             </td>
         </tr>
     }

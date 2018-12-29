@@ -1,7 +1,188 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = null;
 }
 
-<h2>Index</h2>
+<!--<h2>Index</h2>-->
 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta />
+    <title>Home Page</title>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - 闪亮四期学生信息管理系统</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #808080;
+        }
+
+        .example {
+            width: 624px;
+            height: 336px;
+            font-size: 40px;
+            text-align: center;
+            margin: 20px auto;
+            background-color: #464576;
+        }
+
+        .carousel-item {
+            line-height: 336px;
+            color: #fff;
+            font-family: Arial Black;
+        }
+
+        .input {
+            width: 448px;
+            height: 18px;
+            padding: 10px 0;
+            border: 0;
+            margin: 150px 30px 0 400px;
+            _margin-top: 2px;
+            font: 16px arial;
+        }
+
+        .button {
+            width: 100px;
+            height: 40px;
+            border: 0;
+            font-family: arial;
+            font-size: 16px;
+            color: #fff;
+            background: #3385ff;
+            border-radius: 0;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+        }
+        .scale{
+            background-size:contain|cover;
+            width:100%;
+            height:auto;
+        }
+        .di{height: 180px;width:100%; background-color: #424242;}
+        .di div{width: 378px;float:left;margin: 0 auto; }
+        .di div ul,h4{width:150px;margin: 0 auto; list-style: none;}
+        .di div h4{color: #fff;font-size: 18px;padding:20px 0;}
+        .di div ul li{list-style: none;line-height: 30px;}
+        .di div ul li a{color:#a6a6a6;}
+        .di div ul li a:hover{color: #fff;}
+        
+    </style>
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("闪亮四期学生信息管理系统", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("主页", "Index", "Index")</li>
+                    <li>@Html.ActionLink("搜索信息", "Search", "Search")</li>
+                    <li>@Html.ActionLink("修改信息","Index","EditInfo")</li>
+                    <!--<li>@Html.ActionLink("管理员页", "Index", "Admin")</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <img class="scale" src="~/Image/a00.jpg" />
+
+
+    <div id="butong_net_left" style="overflow:hidden;width:3000px;">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td id="butong_net_left1" valign="top" align="center">
+                    <table cellpadding="2" cellspacing="0" border="0">
+
+                        <tr align="center" class="botton">
+                            <td><a href=""><img src="~/Image/a11.jpg" width="500px" height="350px"></a><p>Azure Devops</p></td>
+                            <td><a href=""><img src="~/Image/a22.jpg" width="500px" height="350px"></a><p>Time Mannagement</p></td>
+                            <td><a href=""><img src="~/Image/a33.jpg" width="500px" height="350px"></a><p>Ownership</p></td>
+                            <td><a href=""><img src="~/Image/a44.jpg" width="500px" height="350px"></a><p>Reading Share</p></td>
+                            <td><a href=""><img src="~/Image/a55.jpg" width="500px" height="350px"></a><p>Debugging skill</p></td>
+                            <td><a href=""><img src="~/Image/a66.jpg" width="500px" height="350px"></a><p>Apply Agile Deveopment</p></td>
+                            <td><a href=""><img src="~/Image/a77.jpg" width="500px" height="350px"></a><p>Xamarin Simple Introduction</p></td>
+
+                        </tr>
+                    </table>
+                </td>
+                <td id="butong_net_left2" valign="top"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="di">
+        <div>
+            <h4>关于我们<br /></h4>
+            <ul>
+                <li><a href="">联系我们</a></li>
+                <li><a href="">开发者关系</a></li>
+                <li><a href="">新闻</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>服务<br /></h4>
+            <ul>
+                <li><a href="">使用手册</a></li>
+                <li><a href="">故障诊断</a></li>
+                <li><a href="">联系方式</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>资源<br /></h4>
+            <ul>
+                <li><a href="">Group1-Forum</a></li>
+                <li><a href="">Group2-XXX</a></li>
+                <li><a href="">Group3-Flag</a></li>
+                
+            </ul>
+        </div>
+    </div>
+    <div class="last">
+       
+        <p style="margin-bottom:10px;margin-left:100px;">
+            &#169 2018 Shining Start Informaction<br />
+            此网页最好使用谷歌浏览器、Edge浏览器和其他新式浏览器进行浏览。<br />
+            如有雷同纯属巧合<br />
+        </p>
+    </div>
+
+    <script>
+        var speed = 30;
+        butong_net_left2.innerHTML = butong_net_left1.innerHTML;
+        function Marquee3() {
+            if (butong_net_left2.offsetWidth - butong_net_left.scrollLeft <= 0) {
+                butong_net_left.scrollLeft -= butong_net_left1.offsetWidth;
+            }
+            else {
+                butong_net_left.scrollLeft++;
+            }
+        }
+        var MyMar3 = setInterval(Marquee3, speed);
+        butong_net_left.onmouseover = function () { clearInterval(MyMar3) }
+        butong_net_left.onmouseout = function(){MyMar3=setInterval(Marquee3,speed)}
+
+    </script>
+
+</body>
+</html>

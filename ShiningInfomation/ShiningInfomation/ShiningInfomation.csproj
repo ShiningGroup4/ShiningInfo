@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\EditInfoController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -196,6 +197,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Di.css" />
     <Content Include="Entity\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -210,6 +212,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\a00.jpg" />
+    <Content Include="Image\a11.jpg" />
+    <Content Include="Image\a22.jpg" />
+    <Content Include="Image\a33.jpg" />
+    <Content Include="Image\a44.jpg" />
+    <Content Include="Image\a55.jpg" />
+    <Content Include="Image\a66.jpg" />
+    <Content Include="Image\a77.jpg" />
     <Content Include="Image\Login_header.PNG" />
     <Content Include="Image\Login_image.PNG" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
@@ -258,7 +268,16 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-    <Content Include="Views\Shared\_LayoutStudent.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\DetailsTeacher.cshtml" />
+    <Content Include="Views\Search\DetailsTeacher.cshtml" />
+    <Content Include="Views\Search\DetailsStudent.cshtml" />
+    <Content Include="Views\Search\EditStudent.cshtml" />
+    <Content Include="Views\EditInfo\Create.cshtml" />
+    <Content Include="Views\EditInfo\Delete.cshtml" />
+    <Content Include="Views\EditInfo\Details.cshtml" />
+    <Content Include="Views\EditInfo\Edit.cshtml" />
+    <Content Include="Views\EditInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

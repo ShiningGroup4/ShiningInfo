@@ -2,16 +2,14 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>你好,管理员!</h2>
-<br/>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("新建学生信息", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
-<br/>
 <table class="table">
     <tr>
         <th>
@@ -20,7 +18,9 @@
         <th>
             @Html.DisplayNameFor(model => model.StudentAlias)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Team)
         </th>
@@ -45,6 +45,9 @@
             @Html.DisplayFor(modelItem => item.StudentAlias)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Team)
         </td>
         <td>
@@ -54,12 +57,12 @@
             @Html.DisplayFor(modelItem => item.GroupNum)
         </td>
         <td>
-            @Html.ActionLink(item.TeacherInfo.TeacherName, "DetailsTeacher", new { id = item.TeacherInfo.TeacherID })
+            @Html.DisplayFor(modelItem => item.TeacherInfo.TeacherName)
         </td>
         <td>
-            @Html.ActionLink("修改", "Edit", new { id=item.StudentID }) |
-           
-            @Html.ActionLink("删除", "Delete", new { id=item.StudentID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.StudentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StudentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StudentID })
         </td>
     </tr>
 }

@@ -1,18 +1,18 @@
 ﻿@model ShiningInfomation.Entity.StudentInfo
 
 @{
-    ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "EditStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<h2>EditStudent</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <br/>
+        <br />
         <h3>学生信息</h3>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -83,7 +83,7 @@
 }
 
 <div>
-    @Html.ActionLink("返回", "Index")
+    @Html.ActionLink("返回", "Search")
 </div>
 
 @section Scripts {

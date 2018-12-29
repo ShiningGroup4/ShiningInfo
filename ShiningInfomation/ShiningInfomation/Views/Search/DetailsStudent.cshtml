@@ -1,16 +1,14 @@
 ﻿@model ShiningInfomation.Entity.StudentInfo
 
 @{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "DetailsStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 <div>
-    <h3>删除学生信息</h3>
-    <hr/>
-    <dl class="dl-horizontal" style="">
+    <h3>学生信息</h3>
+    <hr />
+    <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.StudentName)
         </dt>
@@ -25,14 +23,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.StudentAlias)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
         </dd>
 
         <dt>
@@ -68,16 +58,13 @@
         </dd>
 
     </dl>
-    <hr />
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color" style="margin-left:300px">
-            <input type="submit" value="删除" class="btn btn-default" style="margin-bottom:10px" />
-        </div>
-
-        @Html.ActionLink("返回", "Index")
-
-    }
 </div>
+<p style="margin-left:250px">
+   
+  
+        @Html.ActionLink("编辑", "EditStudent", new { id = Model.StudentID }) |
+   
+    
+    @Html.ActionLink("返回", "Search")
+</p>
+

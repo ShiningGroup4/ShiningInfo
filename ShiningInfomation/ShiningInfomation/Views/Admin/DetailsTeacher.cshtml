@@ -1,0 +1,44 @@
+﻿@model ShiningInfomation.Entity.TeacherInfo
+
+@{
+    ViewBag.Title = "DetailsTeacher";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DetailsTeacher</h2>
+<div>
+    <h3>导师信息</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeacherAlias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeacherAlias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Team)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team)
+        </dd>
+    </dl>
+
+</div>
+<p style="margin-left:250px">
+
+    @Html.ActionLink("返回", "Index")
+</p>
+
+

@@ -10,26 +10,18 @@ using ShiningInfomation.Entity;
 
 namespace ShiningInfomation.Controllers
 {
-    public class AdminController : Controller
+    public class EditInfoController : Controller
     {
         private StudentInfoManagementEntities db = new StudentInfoManagementEntities();
 
-   
-        // GET: Admin
+        // GET: EditInfo
         public ActionResult Index()
         {
             var studentInfo = db.StudentInfo.Include(s => s.TeacherInfo);
             return View(studentInfo.ToList());
         }
 
-        //Get: Teacher
-        public ActionResult IndexTeacher()
-        {
-            var TeacherInfo = db.TeacherInfo.Include(s => s.StudentInfo);
-            return View(TeacherInfo.ToList());
-        }
-
-        // GET: Admin/Details/5
+        // GET: EditInfo/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -43,32 +35,17 @@ namespace ShiningInfomation.Controllers
             }
             return View(studentInfo);
         }
-        
-        //GET: Teacher Details
-        public ActionResult DetailsTeacher(String id)
-        {
-            if(id ==null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            TeacherInfo teacherInfo = db.TeacherInfo.Find(id);
-            if (teacherInfo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(teacherInfo);
-        }
 
-        // GET: Admin/Create
+        // GET: EditInfo/Create
         public ActionResult Create()
         {
             ViewBag.TeacherID = new SelectList(db.TeacherInfo, "TeacherID", "TeacherName");
             return View();
         }
 
-        // POST: Admin/Create
-       
-       
+        // POST: EditInfo/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StudentID,StudentName,StudentAlias,Password,Team,Motto,TeacherID,GroupNum")] StudentInfo studentInfo)
@@ -84,7 +61,7 @@ namespace ShiningInfomation.Controllers
             return View(studentInfo);
         }
 
-        // GET: Admin/Edit/5
+        // GET: EditInfo/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -100,13 +77,12 @@ namespace ShiningInfomation.Controllers
             return View(studentInfo);
         }
 
-        // POST: Admin/Edit/5
-
+        // POST: EditInfo/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Edit([Bind(Include = "StudentID,StudentName,StudentAlias,Password,Team,Motto,TeacherID,GroupNum")] StudentInfo studentInfo)
-        //public ActionResult Edit([Bind(Include = "StudentID,StudentName,StudentAlias,Team,Motto,TeacherID,GroupNum")] StudentInfo studentInfo)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +94,7 @@ namespace ShiningInfomation.Controllers
             return View(studentInfo);
         }
 
-        // GET: Admin/Delete/5
+        // GET: EditInfo/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -133,7 +109,7 @@ namespace ShiningInfomation.Controllers
             return View(studentInfo);
         }
 
-        // POST: Admin/Delete/5
+        // POST: EditInfo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

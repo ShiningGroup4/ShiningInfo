@@ -4,8 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 闪亮四期学生信息管理系统</title>
+    <style>
+        .di{height: 180px;width:100%; background-color: #424242;}
+        .di div{width: 378px;float:left;margin: 0 auto; }
+        .di div ul,h4{width:150px;margin: 0 auto; list-style: none;}
+        .di div h4{color: #fff;font-size: 18px;padding:20px 0;}
+        .di div ul li{list-style: none;line-height: 30px;}
+        .di div ul li a{color:#a6a6a6;}
+        .di div ul li a:hover{color: #fff;}
+        .last{background-color: #424242; color:#6a6a6a;}
+    </style>
+    
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,13 +30,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("闪亮四期学生信息管理系统", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("闪亮四期学生信息管理系统", "Index", "Index", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("主页", "Index", "Index")</li>
                     <li>@Html.ActionLink("搜索信息", "Search", "Search")</li>
-                    <li>@Html.ActionLink("管理员页", "Index", "Admin")</li>
+                    <li>@Html.ActionLink("修改信息","EditInfo","EditInfo")</li>
+
+                    <!--<li>@Html.ActionLink("管理员页", "Index", "Admin")</li>-->
                 </ul>
             </div>
         </div>
@@ -34,7 +50,44 @@
             <p style="margin-left:900px;margin-top:100px;">&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+   
+    
+    
+     <div class="di">
+        <div>
+            <h4>关于我们<br /></h4>
+            <ul>
+                <li><a href="">联系我们</a></li>
+                <li><a href="">开发者关系</a></li>
+                <li><a href="">新闻</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>服务<br /></h4>
+            <ul>
+                <li><a href="">使用手册</a></li>
+                <li><a href="">故障诊断</a></li>
+                <li><a href="">联系方式</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>资源<br /></h4>
+            <ul>
+                <li><a href="">Group1-Forum</a></li>
+                <li><a href="">Group2-XXX</a></li>
+                <li><a href="">Group3-Flag</a></li>
 
+            </ul>
+        </div>
+    </div>
+    <div class="last">
+
+        <p style="margin-bottom:10px;margin-left:100px;">
+            &#169 2018 Shining Start Informaction<br />
+            此网页最好使用谷歌浏览器、Edge浏览器和其他新式浏览器进行浏览。<br />
+            如有雷同纯属巧合<br />
+        </p>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
