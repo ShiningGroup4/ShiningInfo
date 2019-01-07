@@ -11,14 +11,14 @@
 {
     <p style="font-family:Arial;font-size:110%;color:black">
         <strong>学生姓名</strong> @Html.TextBox("Search_name", "", new { style = "width:150px; border-radius:5px; " })
-        <br><br>
+        &emsp;
         <strong>导师姓名</strong> @Html.TextBox("Search_teacher", "", new { style = "width:150px; border-radius:5px;" })
         <br><br>
         <strong>项目组</strong>&emsp; @Html.TextBox("Search_team", "", new { style = "width:150px; border-radius:5px;" })
-        <br><br>
+        &emsp;
         <strong>闪亮小组</strong> @Html.TextBox("Search_group", "", new { style = "width:150px; border-radius:5px;" })
         <br>
-        <div style="border:1px;width:215px;height:80px;text-align:right">
+        <div style="border:1px;width:455px;height:80px;text-align:right">
             <input type="submit" value="查询" />
         </div>
     </p>
@@ -28,19 +28,19 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.StudentName)
+                @Html.DisplayNameFor(model => model.StudentName)&emsp;&emsp;&emsp;
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StudentAlias)
+                &emsp;&emsp;@Html.DisplayNameFor(model => model.StudentAlias)&emsp;&emsp;&emsp;
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Team)
+                &emsp;&emsp;@Html.DisplayNameFor(model => model.Team)&emsp;&emsp;&emsp;
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Motto)
+                &emsp;&emsp;@Html.DisplayNameFor(model => model.Motto)&emsp;&emsp;&emsp;
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GroupNum)
+                &emsp;&emsp;@Html.DisplayNameFor(model => model.GroupNum)&emsp;&emsp;&emsp;
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TeacherInfo.TeacherName)
@@ -51,19 +51,19 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StudentName)
+                    @Html.DisplayFor(modelItem => item.StudentName)&emsp;&emsp;&emsp;
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.StudentAlias)
+                    &emsp;&emsp;@Html.DisplayFor(modelItem => item.StudentAlias)&emsp;&emsp;&emsp;
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Team)
+                    &emsp;&emsp;@Html.DisplayFor(modelItem => item.Team)&emsp;&emsp;&emsp;
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Motto)
+                    &emsp;&emsp;@Html.DisplayFor(modelItem => item.Motto)&emsp;&emsp;&emsp;
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GroupNum)
+                    &emsp;&emsp;@Html.DisplayFor(modelItem => item.GroupNum)&emsp;&emsp;&emsp;
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TeacherInfo.TeacherName)
